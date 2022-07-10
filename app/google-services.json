@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970605383800",
+    "project_id": "jye1-3df4e",
+    "storage_bucket": "jye1-3df4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970605383800:android:d31b3fa1de4a5882299d8d",
+        "android_client_info": {
+          "package_name": "com.cookandroid.jye"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970605383800-4alfe923j7u6dbhpce2kk0qtppsvh38a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEO83UPn-cInpHMAwQjDr32cOZqOLN5Tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970605383800-4alfe923j7u6dbhpce2kk0qtppsvh38a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
