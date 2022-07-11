@@ -1,0 +1,46 @@
+package com.cookandroid.jye;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class BusAdapter extends RecyclerView.Adapter<BusAdapter.BusViewHolder> {
+
+    private final ArrayList<Item> BusList;
+
+    BusAdapter(ArrayList<Item>BusList){
+        this.BusList = BusList;
+    }
+
+    public static class BusViewHolder extends RecyclerView.ViewHolder {
+        TextView bus;
+
+        public BusViewHolder(@NonNull View itemView){
+            super(itemView);
+            bus = itemView.findViewById(R.id.tv_busNumber);
+        }
+    }
+
+    @NonNull
+    @Override
+    public BusViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new BusViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_recyclerview_item, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BusViewHolder holder, int position) {
+        Item Bus = BusList.get(position);
+        holder.bus.setText(Bus.getBusNumber());
+    }
+
+    @Override
+    public int getItemCount() {
+        return BusList.size();
+    }
+}
