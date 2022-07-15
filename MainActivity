@@ -1,0 +1,41 @@
+package com.cookandroid.jye;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+
+public class MainActivity extends AppCompatActivity {
+
+    //0715.0346
+//
+
+    //private TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout_id);
+    private ViewPager viewPager;
+    private ViewPagerAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager_id);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        adapter.AddFragment(new FragmentCall(),"Call");
+        adapter.AddFragment(new FragmentContact(),"Contact");
+       // adapter.AddFragment(new FragmentFav(),"Fav");
+        viewPager.setAdapter(adapter);
+       // tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+
+
+
+        //
+    }
+}
