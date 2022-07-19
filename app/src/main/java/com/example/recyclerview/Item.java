@@ -1,6 +1,8 @@
 package com.example.recyclerview;
 
 public class Item {
+    String text;
+
     public String getText() {
         return text;
     }
@@ -12,7 +14,5 @@ public class Item {
     public Item(String text) {
         this.text = text;
     }
-
-    private String text;
 
 }

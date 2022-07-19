@@ -1,5 +1,6 @@
 package com.example.recyclerview;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,43 +10,65 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-//adapter 라는 class에 리사이클러뷰를 상속, 확장
+import java.util.List;
+
 public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
-    private ArrayList<Item> buslist;
-//arrarylist <item.java>,item이 들어가있는 클래스, 이름
 
-    public recyclerAdapter(ArrayList<Item> buslist){
-        this.buslist = buslist;
-//재활용
+    List<Item> BusList;
+    Context context;
+     OnClickShowListener mOnClickShowListener;
+
+    public recyclerAdapter(Context context, ArrayList<Item> BusList, OnClickShowListener onClickShowListener){
+        this.context = context;
+        this.BusList = BusList;
+        this.mOnClickShowListener = onClickShowListener;
+
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView busnumber;
-//
-        public MyViewHolder(final View view){
-            super(view);
-            busnumber = view.findViewById(R.id.textView);
-        }
-    }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.itme, parent,false);
-        return new MyViewHolder(itemView) ;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View View = inflater.inflate(R.layout.itme, parent,false);
+        return new MyViewHolder(View, mOnClickShowListener) ;
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String number = buslist.get(position).getText();
-        holder.busnumber.setText(number);
+        String number = BusList.get(position).getText();
+        holder.tvNumber.setText(number);
+
+
+
     }
 
     @Override
     public int getItemCount() {
-        return buslist.size();
+        return BusList.size();
     }
 
 
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView tvNumber;
+        OnClickShowListener onClickShowListener;
+
+        public MyViewHolder(final View view, OnClickShowListener onClickShowListener){
+            super(view);
+            tvNumber = view.findViewById(R.id.textView);
+            this.onClickShowListener = onClickShowListener;
+            view.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            onClickShowListener.onClickShowListener(getAdapterPosition());
+        }
+    }
+    public interface OnClickShowListener {
+        void onClickShowListener(int position);
+    }
 }
