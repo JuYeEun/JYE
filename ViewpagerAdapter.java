@@ -1,54 +1,50 @@
 package com.cookandroid.jye;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class ViewpagerAdapter extends FragmentPagerAdapter {
 
 
-    public ViewpagerAdapter(@NonNull FragmentManager fm) {
+public class ViewpagerAdapter extends FragmentStateAdapter {
+    private int  mPageCount = 2;
+
+    public ViewpagerAdapter( AppCompatActivity fm) {
         super(fm);
     }
 
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
+      switch (position) {
+          case 0:
+              CallFragment callFragment = new CallFragment();
+              return callFragment;
 
-        if(position==0){
+          case 1:
+              ContactFragment contactFragment = new ContactFragment();
+              return  contactFragment;
 
-            return new CallFragment();
-
-        }else if(position==1){
-
-            return new ContactFragment();
-        }else {
-
-            return new StatusFragment();
+          default:
+              return  null;
         }
+
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
     }
 
 
     @Override
-    public int getCount() {
-        return 2;
-    }
-
-    public CharSequence getPagerTitle(int position) {
-
-        if(position==0){
-
-            return "버스";
-
-        }else if(position==1){
-
-            return "정류장";
-        }else {
-
-            return "Status";
-        }
-
+    public int getItemCount() {
+        return mPageCount;
     }
 }
