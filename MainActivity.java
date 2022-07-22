@@ -1,69 +1,46 @@
 package com.cookandroid.jye;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.firebase.database.core.view.View;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-      ViewPager2 viewPager2;
+    ViewPager viewPager;
     TabLayout tabLayout;
+    ViewpagerAdapter viewpagerAdapter; //0722
 
-    private  ViewpagerAdapter viewpagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //getSupportActionBar().hide();
-
         tabLayout = findViewById(R.id.tabLayout);
-        viewPager2 = findViewById(R.id.viewPager);
+        viewPager = findViewById(R.id.viewPager);
+        ////0722
+        viewpagerAdapter = new ViewpagerAdapter(getSupportFragmentManager());
+
+
+        //viewpagerAdapter 에  fragment 추가
+        // AddFragment = ViewpagerAdapter.java 에서 확인
+        //0722
+        viewpagerAdapter.AddFragment(new CallFragment(),"버스");
+        viewpagerAdapter.AddFragment(new ContactFragment(),"정류장");
 
 
 
+        //ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewpagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-        ViewpagerAdapter viewpagerAdapter = new ViewpagerAdapter(this);
-        viewPager2.setAdapter(viewpagerAdapter);
+        ///탭레이아웃 타이틀 부분에 이미지 추가 , 필요없음
+        //tabLayout.getTabAt(0).setIcon(R.drawable.otver); // 첫번째 = 0번째 탭 레이아웃 타이틀부분에 이미지 삽입되어있음
 
-
-        final List<String> tabName = Arrays.asList("버스", "정류장");
-
-//ViewPager2는 TabLayoutMediator 메서드를 사용, 해당 코드는 tabLayout 과 Viewpager 연결한다
-                new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                TextView textView = new TextView(MainActivity.this);
-                textView.setText(tabName.get(position));
-                tab.setCustomView(textView);
-
-            }
-
-
-        }).attach();
-
-
-
-
-    }
+   }
 }

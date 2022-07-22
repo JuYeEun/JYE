@@ -1,50 +1,73 @@
 package com.cookandroid.jye;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ViewpagerAdapter extends FragmentPagerAdapter {
+
+    //////0722
+    private final List<Fragment> listF = new ArrayList<>();
+    private final  List<String> listT = new ArrayList<>();
+
+    ////
 
 
-
-public class ViewpagerAdapter extends FragmentStateAdapter {
-    private int  mPageCount = 2;
-
-    public ViewpagerAdapter( AppCompatActivity fm) {
+    public ViewpagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
 
     @NonNull
     @Override
-    public Fragment createFragment(int position) {
-      switch (position) {
-          case 0:
-              CallFragment callFragment = new CallFragment();
-              return callFragment;
+    public Fragment getItem(int position) {
 
-          case 1:
-              ContactFragment contactFragment = new ContactFragment();
-              return  contactFragment;
+        return listF.get(position);
 
-          default:
-              return  null;
+
+        /*
+        if(position==0){
+
+            return new CallFragment();
+
+        }else if(position==1){
+
+            return new ContactFragment();
+        }else {
+
+            return new StatusFragment();
         }
+    }*/
+
+
+///////////////0721 , tabLayout Title 작성
+
+    //private String tabTitles[] = new String[]{"버스", "정류장"};
+
+
+        //return tabTitles[position];
+////////////////
 
     }
-
+/////////0722
     @Override
-    public long getItemId(int position) {
-        return super.getItemId(position);
+    public int getCount() {
+        return listT.size();
     }
 
-
+    @Nullable
     @Override
-    public int getItemCount() {
-        return mPageCount;
+    public CharSequence getPageTitle(int position) {
+        return listT.get(position);
+    }
+
+    public void AddFragment (Fragment fragment, String title){
+        listF.add(fragment);
+        listT.add(title);
     }
 }

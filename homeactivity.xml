@@ -20,9 +20,9 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 
         <fragment
             android:name="com.cookandroid.jye.CallFragment"
@@ -50,7 +50,7 @@
             android:id="@+id/btn1"
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:text="검색"
+            android:text="bus"
             android:layout_marginRight="10dp"
             android:backgroundTint="#FFC107"
             android:drawableBottom="@android:drawable/ic_menu_search"
@@ -65,7 +65,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
             android:backgroundTint="#FFC107"
-            android:text="검색"
+            android:text="ouo"
             android:drawableBottom="@android:drawable/ic_menu_search"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -75,7 +75,7 @@
         <Button
             android:id="@+id/btn3"
             android:layout_width="120dp"
-            android:text="검색"
+            android:text="uyu"
             android:drawableBottom="@android:drawable/ic_menu_search"
             android:textStyle="bold"
             android:textColor="@color/black"

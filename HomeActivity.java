@@ -37,6 +37,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(HomeActivity.this,MapActivity.class);
+                startActivity(in);
+
+
+            }
+        });
+
     }
 
 }
