@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cookandroid.jye">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        tools:ignore="CoarseFineLocation"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/bus"
+        android:label="kakao_map"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.JYE"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        >
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/network_security_config" />
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="c73d299aae31b150f8cb79a6921ca0e5" />
+
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity" android:exported="true" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".MapActivity"/>
+        <activity android:name=".RegisterActivity" />
+
+        <activity android:name=".MainActivity" android:exported="true"/>
+    </application>
+
+</manifest>
