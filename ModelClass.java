@@ -1,25 +1,37 @@
-package com.cookandroid.jye;
+package com.example.recyclerviewtest;
 
 public class ModelClass {
 
     int image;
-    String name, number;
+    String number, info;
 
-    public ModelClass(int image, String name, String number) {
+    public ModelClass(int image, String number, String info){
         this.image = image;
-        this.name = name;
         this.number = number;
+        this.info = info;
     }
 
     public int getImage() {
         return image;
     }
 
-    public String getName() {
-        return name;
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getNumber() {
         return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }

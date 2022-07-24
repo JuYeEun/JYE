@@ -1,37 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
-        app:title="저상버스 알리미"
-        app:titleTextColor="#FFFFFF"
-        android:gravity="center_vertical"/>
-
-    <androidx.appcompat.widget.SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFC107"
-        app:tabIndicatorColor="@color/black"
-        app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="#FFFFFF"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:id="@+id/recyclerView"/>
 
 </LinearLayout>
