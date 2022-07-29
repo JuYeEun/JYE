@@ -1,0 +1,29 @@
+package com.example.my;
+
+import android.os.Bundle;
+import android.text.Html;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+        final String text = ">" + "<div class=\"pm-container\">" + "<div class=\"pm-error-card\">" + " <img class=\"pm-error-card__dog\" src=\"https://static.getpostman.com/assets/error-dog.png\">"
+                + "<h3 class=\"pm-h3\">You don&#39;t have access</h3>" + "  <p class=\"pm-error-card__description\">To access this page, switch to an account with permission. You are signed in as wndpdms02029@gmail.com</p>" +
+                " <a href=\"https://identity.getpostman.com/accounts?continue=https%3A%2F%2Fgo.postman.co%2Fworkspace%2F%2525EB%2525A1%25259C%2525EC%252599%252584~ef09e2de-0fcc-4dbf-8dda-8dff46f368ad%2Fcollection%2F14200239-896f23fb-285a-4b07-bc8d-8a0dce263e60%3Fctx%3Ddocumentation\" class=\"pm-link\">Switch accounts</a>\n" +
+                "</div>" + "</div>" + "</div>";
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+       TextView text = (TextView)findViewById(R.id.text);
+       text.setText(Html.fromHtml(String.valueOf(text)));
+
+
+
+    }
+}
